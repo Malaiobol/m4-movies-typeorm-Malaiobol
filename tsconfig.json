@@ -9,6 +9,6 @@
     "exactOptionalPropertyTypes": true,
     "skipLibCheck": true
   },
-  "include": ["src/*", "app.ts", "src/services/users"],
+  "include": ["src", "app.ts", "src/services/users"],
   "exclude": ["node_modules"]
 }
