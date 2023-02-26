@@ -11,7 +11,10 @@ const resultMovieSchema = movieSchema.extend({
     id: z.number()
 })
 
+const returnAllMoviesSchema = resultMovieSchema.array()
+
 export {
     movieSchema,
-    resultMovieSchema
+    resultMovieSchema,
+    returnAllMoviesSchema 
 }
