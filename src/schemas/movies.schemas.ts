@@ -13,8 +13,11 @@ const resultMovieSchema = movieSchema.extend({
 
 const returnAllMoviesSchema = resultMovieSchema.array()
 
+const movieUpdateSchema = movieSchema.partial()
+
 export {
     movieSchema,
     resultMovieSchema,
-    returnAllMoviesSchema 
+    returnAllMoviesSchema,
+    movieUpdateSchema
 }
