@@ -17,7 +17,7 @@ class Movie{
     name: string
 
     @Column({ nullable: true })
-    description: string
+    description?: string | undefined | null
 
     @Column({
         
