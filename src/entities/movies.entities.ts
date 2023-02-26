@@ -10,23 +10,16 @@ class Movie{
     @PrimaryGeneratedColumn('increment')
     id: number
 
-    @Column({
-        unique: true, 
-        length:50,
-    })
+    @Column({ unique: true, length:50 })
     name: string
 
-    @Column({ nullable: true })
-    description?: string | undefined | null
+    @Column({ type:'text', nullable: true })
+    description?: string | undefined | null 
 
-    @Column({
-        
-    })
+    @Column()
     duration: number
 
-    @Column({
-
-    })
+    @Column()
     price: number
 }   
 
