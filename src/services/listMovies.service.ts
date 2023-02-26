@@ -4,7 +4,7 @@ import { Movie } from '../entities';
 import { IMoviesList } from '../interfaces/movies.interfaces';
 import { resultMovieSchema } from '../schemas/movies.schemas';
 
-const listAllMovies = async (): Promise<IMoviesList> =>{
+const listAllMovies = async () =>{
 
     const moviesRepository: Repository<Movie> = AppDataSource.getRepository(Movie)
     
