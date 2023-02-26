@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express"
+import { ZodError } from "zod"
 
 class AppError extends Error {
     statusCode: number
@@ -15,6 +16,11 @@ const handleErrors = (err:any, req: Request, resp: Response, _: NextFunction) =>
             message: err.message
         })
     }
+
+    if(err instanceof ZodError){
+        return resp.status(400).json(err.flatten().fieldErrors)
+    }
+
     console.log(err)
     return resp.status(500).json({
         message: 'Internal server error'
