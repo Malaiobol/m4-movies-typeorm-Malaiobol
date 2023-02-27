@@ -16,7 +16,8 @@ const createMovieController = async (req: Request, resp: Response) =>{
 
 const listAllMoviesController = async (req: Request, resp: Response) =>{
     
-    const movies = await listAllMovies()
+    const movies = await listAllMovies(req.query)
+    
     return resp.status(200).json(movies)
 }
 

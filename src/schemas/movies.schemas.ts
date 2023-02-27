@@ -1,10 +1,10 @@
 import { z } from 'zod'
 
 const movieSchema = z.object({
-    name: z.string().max(50),
+    duration: z.number().gt(0),
+    name: z.string().min(1).max(50),
     description: z.string().nullable().optional(),
-    duration: z.number(),
-    price: z.number()
+    price: z.number().int(),
 })
 
 const resultMovieSchema = movieSchema.extend({

@@ -102,7 +102,8 @@ describe('POST /movies', () => {
     const response = await supertest(app)
       .post(baseUrl)
       .send(createRouteMock.movieInvalidBody);
-
+    console.log(createRouteMock.movieInvalidBody)
+    console.log(response.body)
     const expectResults = {
       status: 400,
       bodyMessage: {
@@ -127,6 +128,8 @@ describe('POST /movies', () => {
       .post(baseUrl)
       .send(createRouteMock.movieInvalidBody2);
 
+      console.log(createRouteMock)
+      console.log(response.body)
     const expectResults = {
       status: 400,
       bodyMessage: {
