@@ -1,8 +1,8 @@
 import { Repository } from "typeorm"
-import { AppDataSource } from "../data-source"
-import { Movie } from "../entities"
-import { IMovieResult, IMovieUpdate } from "../interfaces/movies.interfaces"
-import { resultMovieSchema } from "../schemas/movies.schemas"
+import { AppDataSource } from "../../data-source"
+import { Movie } from "../../entities"
+import { IMovieResult, IMovieUpdate } from "../../interfaces/movies.interfaces"
+import { resultMovieSchema } from "../../schemas/movies.schemas"
 
 const updateMovieService = async (movieData: IMovieUpdate, movieId: number): Promise<IMovieResult> =>{
 

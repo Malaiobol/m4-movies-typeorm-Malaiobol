@@ -3,7 +3,8 @@ import{
     IMovieResult,
     IMoviesList,
     IMovieUpdate,
-    iMovieRepo
+    iMovieRepo,
+    IMovieAllResult
 } from './movies.interfaces'
 
 export {
@@ -11,5 +12,6 @@ export {
     IMovieResult,
     IMoviesList,
     IMovieUpdate,
-    iMovieRepo
+    iMovieRepo,
+    IMovieAllResult
 }

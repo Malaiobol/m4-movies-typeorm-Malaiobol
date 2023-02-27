@@ -13,11 +13,19 @@ const resultMovieSchema = movieSchema.extend({
 
 const returnAllMoviesSchema = resultMovieSchema.array()
 
+const prevNextMoviesSchema = z.object({
+    prevPage: z.string().nullable(),
+    nextPage: z.string().nullable(),
+    count: z.number(),
+    data: returnAllMoviesSchema
+})
+
 const movieUpdateSchema = movieSchema.partial()
 
 export {
     movieSchema,
     resultMovieSchema,
     returnAllMoviesSchema,
-    movieUpdateSchema
+    movieUpdateSchema,
+    prevNextMoviesSchema
 }
