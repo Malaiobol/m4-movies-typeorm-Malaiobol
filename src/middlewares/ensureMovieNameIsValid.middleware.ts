@@ -4,22 +4,18 @@ import { AppDataSource } from '../data-source'
 import { Movie } from '../entities'
 import { AppError } from '../errors'
 
-const ensureMovieIsUnique = async (req: Request, resp: Response, next:NextFunction): Promise<void> =>{
-    const moviesRepository: Repository<Movie> = AppDataSource.getRepository(Movie)
-
-    const findMovie = moviesRepository.findOne({
-        where:{ 
+const ensureMovieNameIsValid = async (req: Request, resp: Response, next:NextFunction): Promise<void> =>{
+    
+    const movieRepository: Repository<Movie> = AppDataSource.getRepository(Movie)
+    if(req.body.name){
+        const findMovieName = await movieRepository.findOneBy({
             name: req.body.name
-        }
-    })
+        })
+        if(findMovieName) throw new AppError('Movie already exists.', 409)
+    }
+    
+    return next()
 
-    console.log(findMovie)
-
-    if(!findMovie){
-      return next()  
-    } 
-        
-    throw new AppError('Movie already exists.', 409)
 }
 
-export default ensureMovieIsUnique
+export default ensureMovieNameIsValid

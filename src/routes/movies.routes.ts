@@ -1,4 +1,7 @@
 import { Router } from 'express'
+import ensureMovieExists from '../middlewares/ensureMovieExists.middleware'
+import ensureMovieDataIsValid from '../middlewares/ensureDataIsValid.middleware'
+import ensureMovieNameIsValid from '../middlewares/ensureMovieNameIsValid.middleware'
 import { 
     movieSchema, 
     movieUpdateSchema 
@@ -9,15 +12,11 @@ import {
     listAllMoviesController, 
     updateUserController 
 } from '../controllers/movies.controllers'
-import ensureMovieExists from '../middlewares/ensureMovieExists.middleware'
-import ensureMovieDataIsValid from '../middlewares/ensureDataIsValid.middleware'
-import ensureMovieIsUnique from '../middlewares/ensureMovieNameIsValid.middleware'
-
 const movieRouts: Router = Router()
 
-movieRouts.post('', ensureMovieDataIsValid(movieSchema), ensureMovieIsUnique, createMovieController)
+movieRouts.post('', ensureMovieDataIsValid(movieSchema), ensureMovieNameIsValid, createMovieController)
 movieRouts.get('', listAllMoviesController)
 movieRouts.delete('/:id', ensureMovieExists, deleteMovieController)
-movieRouts.patch('/:id', ensureMovieDataIsValid(movieUpdateSchema), ensureMovieIsUnique, ensureMovieExists, updateUserController)
+movieRouts.patch('/:id', ensureMovieDataIsValid(movieUpdateSchema),  ensureMovieNameIsValid, ensureMovieExists, updateUserController)
 
 export default movieRouts

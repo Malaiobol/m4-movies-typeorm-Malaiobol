@@ -4,10 +4,10 @@ import { AppDataSource } from '../data-source'
 import { Movie } from '../entities'
 import { AppError } from '../errors'
 
-const ensureMovieExists = async (req: Request, resp: Response, next:NextFunction): Promise<void> =>{
+const ensureMovieExists = async (req: Request, resp: Response, next: NextFunction): Promise<void> =>{
     const moviesRepository: Repository<Movie> = AppDataSource.getRepository(Movie)
 
-    const findMovie = moviesRepository.findOne({
+    const findMovie = await moviesRepository.findOne({
         where:{ 
             id: parseInt(req.params.id)
         }

@@ -1,9 +1,14 @@
 import { Request, Response } from 'express'
-import { IMovie, IMovieUpdate } from '../interfaces/movies.interfaces'
-import { deleteMovieService } from '../services/deleteMovies.service'
-import { listAllMovies } from '../services/listMovies.service'
-import { updateMovieService } from '../services/updateMovie.service'
-import createMovieService from '../services/createMovie.service'
+import { 
+    IMovie, 
+    IMovieAllResult, 
+    IMoviesList, 
+    IMovieUpdate 
+} from '../interfaces'
+import { deleteMovieService } from '../services/movies/deleteMovies.service'
+import { listAllMovies } from '../services/movies/listMovies.service'
+import { updateMovieService } from '../services/movies/updateMovie.service'
+import createMovieService from '../services/movies/createMovie.service'
 
 const createMovieController = async (req: Request, resp: Response) =>{
     
@@ -16,8 +21,11 @@ const createMovieController = async (req: Request, resp: Response) =>{
 
 const listAllMoviesController = async (req: Request, resp: Response) =>{
     
-    const movies = await listAllMovies()
-    return resp.status(200).json(movies)
+    const { page, perPage, sort } = req.query
+    const order = (req.query.order)?.toString().toUpperCase()
+    const allMovies: IMovieAllResult = await listAllMovies(page, perPage, order, sort)
+
+    return resp.status(200).json(allMovies)
 }
 
 const deleteMovieController = async (req: Request, resp: Response) =>{

@@ -1,8 +1,8 @@
-import { IMovie, IMovieResult } from '../interfaces/movies.interfaces'
-import { AppDataSource } from '../data-source'
-import { Movie } from '../entities'
+import { IMovie, IMovieResult } from '../../interfaces/movies.interfaces'
+import { AppDataSource } from '../../data-source'
+import { Movie } from '../../entities'
 import { Repository } from 'typeorm'
-import { resultMovieSchema } from '../schemas/movies.schemas'
+import { resultMovieSchema } from '../../schemas/movies.schemas'
 
 const createMovieService = async (movieData: IMovie): Promise<IMovieResult> =>{
 
